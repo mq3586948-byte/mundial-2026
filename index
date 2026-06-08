@@ -6,72 +6,44 @@
 <title>FIFA World Cup 2026 — El Álbum</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
-  :root {
-    --gold: #f0b429; --gold2: #e07b00; --dark: #05090f; --darker: #020508;
-    --card-bg: #0d1520; --card-border: #1a2a40; --text: #dce8f5; --muted: #6a8aaa;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--darker); color: var(--text); font-family: 'Barlow Condensed', sans-serif; overflow-x: hidden; }
-  header {
-    position: relative; text-align: center; padding: 60px 20px 40px;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, #0a1e3a 0%, var(--darker) 100%);
-  }
-  header::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
-  .trophy-icon { font-size:4rem; animation:pulse 3s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{transform:scale(1) rotate(-3deg)} 50%{transform:scale(1.08) rotate(3deg)} }
-  h1 {
-    font-family:'Bebas Neue',sans-serif; font-size:clamp(3rem,10vw,8rem); letter-spacing:.04em;
-    background:linear-gradient(135deg,#fff 30%,var(--gold) 70%);
-    -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1;
-  }
-  .subtitle { font-size:clamp(1rem,3vw,1.6rem); color:var(--gold); letter-spacing:.3em; text-transform:uppercase; margin-top:6px; }
-  .hosts { margin-top:14px; font-size:1rem; color:var(--muted); letter-spacing:.15em; }
-  .hosts span { color:var(--text); }
-  .page { max-width:1400px; margin:0 auto; padding:0 20px 60px; }
-  .section-title { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; color:var(--muted); letter-spacing:.4em; text-transform:uppercase; text-align:center; margin:40px 0 24px; }
-  .video-section { margin:50px 0; }
-  .video-wrapper {
-    position:relative; max-width:860px; margin:0 auto; border-radius:12px; overflow:hidden;
-    box-shadow:0 0 0 1px var(--card-border),0 0 60px rgba(240,180,41,.18),0 30px 80px rgba(0,0,0,.7);
-  }
-  .youtube-embed { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; }
-  .youtube-embed iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
-  .video-caption { text-align:center; margin-top:14px; font-size:1.1rem; color:var(--muted); letter-spacing:.2em; text-transform:uppercase; }
-  .video-caption strong { color:var(--gold); }
-  .group-label {
-    font-family:'Bebas Neue',sans-serif; font-size:2.8rem; color:var(--gold); letter-spacing:.15em;
-    padding:10px 0 4px; border-bottom:2px solid var(--card-border); margin-bottom:18px;
-    display:flex; align-items:center; gap:12px;
-  }
-  .group-label::before { content:''; display:block; width:6px; height:2.4rem; background:var(--gold); border-radius:3px; }
-  .groups-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:32px; }
-  .group-block {
-    background:var(--card-bg); border:1px solid var(--card-border); border-radius:12px; padding:20px;
-    transition:transform .3s,box-shadow .3s; opacity:0; animation:fadeUp .6s ease forwards;
-  }
-  .group-block:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(240,180,41,.12); }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-  .group-block:nth-child(1){animation-delay:.05s} .group-block:nth-child(2){animation-delay:.1s}
-  .group-block:nth-child(3){animation-delay:.15s} .group-block:nth-child(4){animation-delay:.2s}
-  .group-block:nth-child(5){animation-delay:.25s} .group-block:nth-child(6){animation-delay:.3s}
-  .group-block:nth-child(7){animation-delay:.35s} .group-block:nth-child(8){animation-delay:.4s}
-  .group-block:nth-child(9){animation-delay:.45s} .group-block:nth-child(10){animation-delay:.5s}
-  .group-block:nth-child(11){animation-delay:.55s} .group-block:nth-child(12){animation-delay:.6s}
-  .team-row {
-    display:flex; align-items:center; gap:12px; padding:9px 6px;
-    border-bottom:1px solid rgba(255,255,255,.04); transition:background .2s; border-radius:6px;
-  }
-  .team-row:last-child { border-bottom:none; }
-  .team-row:hover { background:rgba(255,255,255,.04); }
-  .team-flag { font-size:1.8rem; width:36px; text-align:center; }
-  .team-info { flex:1; }
-  .team-name { font-size:1.05rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--text); }
-  .team-conf { font-size:.75rem; color:var(--muted); letter-spacing:.1em; }
-  .team-num { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:var(--card-border); width:32px; text-align:right; }
-  .sticker { display:inline-block; background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#000; font-family:'Bebas Neue',sans-serif; font-size:.85rem; letter-spacing:.12em; padding:2px 8px; border-radius:3px; margin-left:auto; flex-shrink:0; }
-  footer { text-align:center; padding:40px 20px; border-top:1px solid var(--card-border); color:var(--muted); font-size:.9rem; letter-spacing:.15em; }
-  footer strong { color:var(--gold); }
-  @media(max-width:600px){ .groups-grid{grid-template-columns:1fr} }
+  :root { --gold:#f0b429;--gold2:#e07b00;--darker:#020508;--card-bg:#0d1520;--card-border:#1a2a40;--text:#dce8f5;--muted:#6a8aaa; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--darker);color:var(--text);font-family:'Barlow Condensed',sans-serif;overflow-x:hidden}
+  header{position:relative;text-align:center;padding:60px 20px 40px;background:radial-gradient(ellipse 80% 60% at 50% 0%,#0a1e3a 0%,var(--darker) 100%)}
+  header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .trophy-icon{font-size:4rem;animation:pulse 3s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1) rotate(-3deg)}50%{transform:scale(1.08) rotate(3deg)}}
+  h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,10vw,8rem);letter-spacing:.04em;background:linear-gradient(135deg,#fff 30%,var(--gold) 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+  .subtitle{font-size:clamp(1rem,3vw,1.6rem);color:var(--gold);letter-spacing:.3em;text-transform:uppercase;margin-top:6px}
+  .hosts{margin-top:14px;font-size:1rem;color:var(--muted);letter-spacing:.15em}
+  .hosts span{color:var(--text)}
+  .page{max-width:1400px;margin:0 auto;padding:0 20px 60px}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--muted);letter-spacing:.4em;text-transform:uppercase;text-align:center;margin:40px 0 24px}
+  .video-section{margin:50px 0}
+  .video-wrapper{position:relative;max-width:860px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 0 0 1px var(--card-border),0 0 60px rgba(240,180,41,.18),0 30px 80px rgba(0,0,0,.7)}
+  .youtube-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+  .youtube-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+  .video-caption{text-align:center;margin-top:14px;font-size:1.1rem;color:var(--muted);letter-spacing:.2em;text-transform:uppercase}
+  .video-caption strong{color:var(--gold)}
+  .group-label{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--gold);letter-spacing:.15em;padding:10px 0 4px;border-bottom:2px solid var(--card-border);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .group-label::before{content:'';display:block;width:6px;height:2.4rem;background:var(--gold);border-radius:3px}
+  .groups-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:32px}
+  .group-block{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:20px;transition:transform .3s,box-shadow .3s;opacity:0;animation:fadeUp .6s ease forwards}
+  .group-block:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(240,180,41,.12)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .group-block:nth-child(1){animation-delay:.05s}.group-block:nth-child(2){animation-delay:.1s}.group-block:nth-child(3){animation-delay:.15s}.group-block:nth-child(4){animation-delay:.2s}.group-block:nth-child(5){animation-delay:.25s}.group-block:nth-child(6){animation-delay:.3s}.group-block:nth-child(7){animation-delay:.35s}.group-block:nth-child(8){animation-delay:.4s}.group-block:nth-child(9){animation-delay:.45s}.group-block:nth-child(10){animation-delay:.5s}.group-block:nth-child(11){animation-delay:.55s}.group-block:nth-child(12){animation-delay:.6s}
+  .team-row{display:flex;align-items:center;gap:12px;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.04);transition:background .2s;border-radius:6px}
+  .team-row:last-child{border-bottom:none}
+  .team-row:hover{background:rgba(255,255,255,.04)}
+  .team-flag{font-size:1.8rem;width:36px;text-align:center}
+  .team-info{flex:1}
+  .team-name{font-size:1.05rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text)}
+  .team-conf{font-size:.75rem;color:var(--muted);letter-spacing:.1em}
+  .team-num{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--card-border);width:32px;text-align:right}
+  .sticker{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.12em;padding:2px 8px;border-radius:3px;margin-left:auto;flex-shrink:0}
+  footer{text-align:center;padding:40px 20px;border-top:1px solid var(--card-border);color:var(--muted);font-size:.9rem;letter-spacing:.15em}
+  footer strong{color:var(--gold)}
+  @media(max-width:600px){.groups-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -88,95 +60,23 @@
       <div class="youtube-embed">
         <iframe src="https://www.youtube.com/embed/eSEexszWwp4" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
-      </div>
+    </div>
     <p class="video-caption"><strong>¿Quién ganará el Mundial 2026?</strong> — Predicción Final</p>
   </div>
   <p class="section-title">⚽ &nbsp; Grupos del Torneo &nbsp; ⚽</p>
   <div class="groups-grid">
-    <div class="group-block">
-      <div class="group-label">Grupo A</div>
-      <div class="team-row"><span class="team-flag">🇺🇸</span><div class="team-info"><div class="team-name">Estados Unidos</div><div class="team-conf">CONCACAF</div></div><span class="sticker">LOCAL</span></div>
-      <div class="team-row"><span class="team-flag">🇵🇹</span><div class="team-info"><div class="team-name">Portugal</div><div class="team-conf">UEFA</div></div><div class="team-num">1</div></div>
-      <div class="team-row"><span class="team-flag">🇩🇿</span><div class="team-info"><div class="team-name">Argelia</div><div class="team-conf">CAF</div></div><div class="team-num">2</div></div>
-      <div class="team-row"><span class="team-flag">🇺🇾</span><div class="team-info"><div class="team-name">Uruguay</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">3</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo B</div>
-      <div class="team-row"><span class="team-flag">🇲🇽</span><div class="team-info"><div class="team-name">México</div><div class="team-conf">CONCACAF</div></div><span class="sticker">LOCAL</span></div>
-      <div class="team-row"><span class="team-flag">🇦🇷</span><div class="team-info"><div class="team-name">Argentina</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">4</div></div>
-      <div class="team-row"><span class="team-flag">🇵🇱</span><div class="team-info"><div class="team-name">Polonia</div><div class="team-conf">UEFA</div></div><div class="team-num">5</div></div>
-      <div class="team-row"><span class="team-flag">🇸🇦</span><div class="team-info"><div class="team-name">Arabia Saudita</div><div class="team-conf">AFC</div></div><div class="team-num">6</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo C</div>
-      <div class="team-row"><span class="team-flag">🇨🇦</span><div class="team-info"><div class="team-name">Canadá</div><div class="team-conf">CONCACAF</div></div><span class="sticker">LOCAL</span></div>
-      <div class="team-row"><span class="team-flag">🇫🇷</span><div class="team-info"><div class="team-name">Francia</div><div class="team-conf">UEFA</div></div><div class="team-num">7</div></div>
-      <div class="team-row"><span class="team-flag">🇦🇺</span><div class="team-info"><div class="team-name">Australia</div><div class="team-conf">AFC</div></div><div class="team-num">8</div></div>
-      <div class="team-row"><span class="team-flag">🇸🇳</span><div class="team-info"><div class="team-name">Senegal</div><div class="team-conf">CAF</div></div><div class="team-num">9</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo D</div>
-      <div class="team-row"><span class="team-flag">🇧🇷</span><div class="team-info"><div class="team-name">Brasil</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">10</div></div>
-      <div class="team-row"><span class="team-flag">🇩🇪</span><div class="team-info"><div class="team-name">Alemania</div><div class="team-conf">UEFA</div></div><div class="team-num">11</div></div>
-      <div class="team-row"><span class="team-flag">🇯🇵</span><div class="team-info"><div class="team-name">Japón</div><div class="team-conf">AFC</div></div><div class="team-num">12</div></div>
-      <div class="team-row"><span class="team-flag">🇲🇦</span><div class="team-info"><div class="team-name">Marruecos</div><div class="team-conf">CAF</div></div><div class="team-num">13</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo E</div>
-      <div class="team-row"><span class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="team-info"><div class="team-name">Inglaterra</div><div class="team-conf">UEFA</div></div><div class="team-num">14</div></div>
-      <div class="team-row"><span class="team-flag">🇨🇴</span><div class="team-info"><div class="team-name">Colombia</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">15</div></div>
-      <div class="team-row"><span class="team-flag">🇮🇷</span><div class="team-info"><div class="team-name">Irán</div><div class="team-conf">AFC</div></div><div class="team-num">16</div></div>
-      <div class="team-row"><span class="team-flag">🇨🇮</span><div class="team-info"><div class="team-name">Costa de Marfil</div><div class="team-conf">CAF</div></div><div class="team-num">17</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo F</div>
-      <div class="team-row"><span class="team-flag">🇪🇸</span><div class="team-info"><div class="team-name">España</div><div class="team-conf">UEFA</div></div><div class="team-num">18</div></div>
-      <div class="team-row"><span class="team-flag">🇳🇱</span><div class="team-info"><div class="team-name">Países Bajos</div><div class="team-conf">UEFA</div></div><div class="team-num">19</div></div>
-      <div class="team-row"><span class="team-flag">🇨🇱</span><div class="team-info"><div class="team-name">Chile</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">20</div></div>
-      <div class="team-row"><span class="team-flag">🇰🇷</span><div class="team-info"><div class="team-name">Corea del Sur</div><div class="team-conf">AFC</div></div><div class="team-num">21</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo G</div>
-      <div class="team-row"><span class="team-flag">🇧🇪</span><div class="team-info"><div class="team-name">Bélgica</div><div class="team-conf">UEFA</div></div><div class="team-num">22</div></div>
-      <div class="team-row"><span class="team-flag">🇨🇷</span><div class="team-info"><div class="team-name">Costa Rica</div><div class="team-conf">CONCACAF</div></div><div class="team-num">23</div></div>
-      <div class="team-row"><span class="team-flag">🇬🇭</span><div class="team-info"><div class="team-name">Ghana</div><div class="team-conf">CAF</div></div><div class="team-num">24</div></div>
-      <div class="team-row"><span class="team-flag">🇸🇷</span><div class="team-info"><div class="team-name">Surinam</div><div class="team-conf">CONCACAF</div></div><div class="team-num">25</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo H</div>
-      <div class="team-row"><span class="team-flag">🇮🇹</span><div class="team-info"><div class="team-name">Italia</div><div class="team-conf">UEFA</div></div><div class="team-num">26</div></div>
-      <div class="team-row"><span class="team-flag">🇪🇨</span><div class="team-info"><div class="team-name">Ecuador</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">27</div></div>
-      <div class="team-row"><span class="team-flag">🇳🇬</span><div class="team-info"><div class="team-name">Nigeria</div><div class="team-conf">CAF</div></div><div class="team-num">28</div></div>
-      <div class="team-row"><span class="team-flag">🇦🇹</span><div class="team-info"><div class="team-name">Austria</div><div class="team-conf">UEFA</div></div><div class="team-num">29</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo I</div>
-      <div class="team-row"><span class="team-flag">🇨🇭</span><div class="team-info"><div class="team-name">Suiza</div><div class="team-conf">UEFA</div></div><div class="team-num">30</div></div>
-      <div class="team-row"><span class="team-flag">🇵🇪</span><div class="team-info"><div class="team-name">Perú</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">31</div></div>
-      <div class="team-row"><span class="team-flag">🇷🇸</span><div class="team-info"><div class="team-name">Serbia</div><div class="team-conf">UEFA</div></div><div class="team-num">32</div></div>
-      <div class="team-row"><span class="team-flag">🇨🇲</span><div class="team-info"><div class="team-name">Camerún</div><div class="team-conf">CAF</div></div><div class="team-num">33</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo J</div>
-      <div class="team-row"><span class="team-flag">🇩🇰</span><div class="team-info"><div class="team-name">Dinamarca</div><div class="team-conf">UEFA</div></div><div class="team-num">34</div></div>
-      <div class="team-row"><span class="team-flag">🇻🇪</span><div class="team-info"><div class="team-name">Venezuela</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">35</div></div>
-      <div class="team-row"><span class="team-flag">🇸🇪</span><div class="team-info"><div class="team-name">Suecia</div><div class="team-conf">UEFA</div></div><div class="team-num">36</div></div>
-      <div class="team-row"><span class="team-flag">🇹🇳</span><div class="team-info"><div class="team-name">Túnez</div><div class="team-conf">CAF</div></div><div class="team-num">37</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo K</div>
-      <div class="team-row"><span class="team-flag">🇹🇷</span><div class="team-info"><div class="team-name">Türkiye</div><div class="team-conf">UEFA</div></div><div class="team-num">38</div></div>
-      <div class="team-row"><span class="team-flag">🇵🇾</span><div class="team-info"><div class="team-name">Paraguay</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">39</div></div>
-      <div class="team-row"><span class="team-flag">🇺🇿</span><div class="team-info"><div class="team-name">Uzbekistán</div><div class="team-conf">AFC</div></div><div class="team-num">40</div></div>
-      <div class="team-row"><span class="team-flag">🇿🇦</span><div class="team-info"><div class="team-name">Sudáfrica</div><div class="team-conf">CAF</div></div><div class="team-num">41</div></div>
-    </div>
-    <div class="group-block">
-      <div class="group-label">Grupo L</div>
-      <div class="team-row"><span class="team-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><div class="team-info"><div class="team-name">Escocia</div><div class="team-conf">UEFA</div></div><div class="team-num">42</div></div>
-      <div class="team-row"><span class="team-flag">🇧🇴</span><div class="team-info"><div class="team-name">Bolivia</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">43</div></div>
-      <div class="team-row"><span class="team-flag">🇶🇦</span><div class="team-info"><div class="team-name">Qatar</div><div class="team-conf">AFC</div></div><div class="team-num">44</div></div>
-      <div class="team-row"><span class="team-flag">🇧🇫</span><div class="team-info"><div class="team-name">Burkina Faso</div><div class="team-conf">CAF</div></div><div class="team-num">45</div></div>
-    </div>
+    <div class="group-block"><div class="group-label">Grupo A</div><div class="team-row"><span class="team-flag">🇺🇸</span><div class="team-info"><div class="team-name">Estados Unidos</div><div class="team-conf">CONCACAF</div></div><span class="sticker">LOCAL</span></div><div class="team-row"><span class="team-flag">🇵🇹</span><div class="team-info"><div class="team-name">Portugal</div><div class="team-conf">UEFA</div></div><div class="team-num">1</div></div><div class="team-row"><span class="team-flag">🇩🇿</span><div class="team-info"><div class="team-name">Argelia</div><div class="team-conf">CAF</div></div><div class="team-num">2</div></div><div class="team-row"><span class="team-flag">🇺🇾</span><div class="team-info"><div class="team-name">Uruguay</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">3</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo B</div><div class="team-row"><span class="team-flag">🇲🇽</span><div class="team-info"><div class="team-name">México</div><div class="team-conf">CONCACAF</div></div><span class="sticker">LOCAL</span></div><div class="team-row"><span class="team-flag">🇦🇷</span><div class="team-info"><div class="team-name">Argentina</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">4</div></div><div class="team-row"><span class="team-flag">🇵🇱</span><div class="team-info"><div class="team-name">Polonia</div><div class="team-conf">UEFA</div></div><div class="team-num">5</div></div><div class="team-row"><span class="team-flag">🇸🇦</span><div class="team-info"><div class="team-name">Arabia Saudita</div><div class="team-conf">AFC</div></div><div class="team-num">6</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo C</div><div class="team-row"><span class="team-flag">🇨🇦</span><div class="team-info"><div class="team-name">Canadá</div><div class="team-conf">CONCACAF</div></div><span class="sticker">LOCAL</span></div><div class="team-row"><span class="team-flag">🇫🇷</span><div class="team-info"><div class="team-name">Francia</div><div class="team-conf">UEFA</div></div><div class="team-num">7</div></div><div class="team-row"><span class="team-flag">🇦🇺</span><div class="team-info"><div class="team-name">Australia</div><div class="team-conf">AFC</div></div><div class="team-num">8</div></div><div class="team-row"><span class="team-flag">🇸🇳</span><div class="team-info"><div class="team-name">Senegal</div><div class="team-conf">CAF</div></div><div class="team-num">9</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo D</div><div class="team-row"><span class="team-flag">🇧🇷</span><div class="team-info"><div class="team-name">Brasil</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">10</div></div><div class="team-row"><span class="team-flag">🇩🇪</span><div class="team-info"><div class="team-name">Alemania</div><div class="team-conf">UEFA</div></div><div class="team-num">11</div></div><div class="team-row"><span class="team-flag">🇯🇵</span><div class="team-info"><div class="team-name">Japón</div><div class="team-conf">AFC</div></div><div class="team-num">12</div></div><div class="team-row"><span class="team-flag">🇲🇦</span><div class="team-info"><div class="team-name">Marruecos</div><div class="team-conf">CAF</div></div><div class="team-num">13</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo E</div><div class="team-row"><span class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><div class="team-info"><div class="team-name">Inglaterra</div><div class="team-conf">UEFA</div></div><div class="team-num">14</div></div><div class="team-row"><span class="team-flag">🇨🇴</span><div class="team-info"><div class="team-name">Colombia</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">15</div></div><div class="team-row"><span class="team-flag">🇮🇷</span><div class="team-info"><div class="team-name">Irán</div><div class="team-conf">AFC</div></div><div class="team-num">16</div></div><div class="team-row"><span class="team-flag">🇨🇮</span><div class="team-info"><div class="team-name">Costa de Marfil</div><div class="team-conf">CAF</div></div><div class="team-num">17</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo F</div><div class="team-row"><span class="team-flag">🇪🇸</span><div class="team-info"><div class="team-name">España</div><div class="team-conf">UEFA</div></div><div class="team-num">18</div></div><div class="team-row"><span class="team-flag">🇳🇱</span><div class="team-info"><div class="team-name">Países Bajos</div><div class="team-conf">UEFA</div></div><div class="team-num">19</div></div><div class="team-row"><span class="team-flag">🇨🇱</span><div class="team-info"><div class="team-name">Chile</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">20</div></div><div class="team-row"><span class="team-flag">🇰🇷</span><div class="team-info"><div class="team-name">Corea del Sur</div><div class="team-conf">AFC</div></div><div class="team-num">21</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo G</div><div class="team-row"><span class="team-flag">🇧🇪</span><div class="team-info"><div class="team-name">Bélgica</div><div class="team-conf">UEFA</div></div><div class="team-num">22</div></div><div class="team-row"><span class="team-flag">🇨🇷</span><div class="team-info"><div class="team-name">Costa Rica</div><div class="team-conf">CONCACAF</div></div><div class="team-num">23</div></div><div class="team-row"><span class="team-flag">🇬🇭</span><div class="team-info"><div class="team-name">Ghana</div><div class="team-conf">CAF</div></div><div class="team-num">24</div></div><div class="team-row"><span class="team-flag">🇸🇷</span><div class="team-info"><div class="team-name">Surinam</div><div class="team-conf">CONCACAF</div></div><div class="team-num">25</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo H</div><div class="team-row"><span class="team-flag">🇮🇹</span><div class="team-info"><div class="team-name">Italia</div><div class="team-conf">UEFA</div></div><div class="team-num">26</div></div><div class="team-row"><span class="team-flag">🇪🇨</span><div class="team-info"><div class="team-name">Ecuador</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">27</div></div><div class="team-row"><span class="team-flag">🇳🇬</span><div class="team-info"><div class="team-name">Nigeria</div><div class="team-conf">CAF</div></div><div class="team-num">28</div></div><div class="team-row"><span class="team-flag">🇦🇹</span><div class="team-info"><div class="team-name">Austria</div><div class="team-conf">UEFA</div></div><div class="team-num">29</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo I</div><div class="team-row"><span class="team-flag">🇨🇭</span><div class="team-info"><div class="team-name">Suiza</div><div class="team-conf">UEFA</div></div><div class="team-num">30</div></div><div class="team-row"><span class="team-flag">🇵🇪</span><div class="team-info"><div class="team-name">Perú</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">31</div></div><div class="team-row"><span class="team-flag">🇷🇸</span><div class="team-info"><div class="team-name">Serbia</div><div class="team-conf">UEFA</div></div><div class="team-num">32</div></div><div class="team-row"><span class="team-flag">🇨🇲</span><div class="team-info"><div class="team-name">Camerún</div><div class="team-conf">CAF</div></div><div class="team-num">33</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo J</div><div class="team-row"><span class="team-flag">🇩🇰</span><div class="team-info"><div class="team-name">Dinamarca</div><div class="team-conf">UEFA</div></div><div class="team-num">34</div></div><div class="team-row"><span class="team-flag">🇻🇪</span><div class="team-info"><div class="team-name">Venezuela</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">35</div></div><div class="team-row"><span class="team-flag">🇸🇪</span><div class="team-info"><div class="team-name">Suecia</div><div class="team-conf">UEFA</div></div><div class="team-num">36</div></div><div class="team-row"><span class="team-flag">🇹🇳</span><div class="team-info"><div class="team-name">Túnez</div><div class="team-conf">CAF</div></div><div class="team-num">37</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo K</div><div class="team-row"><span class="team-flag">🇹🇷</span><div class="team-info"><div class="team-name">Türkiye</div><div class="team-conf">UEFA</div></div><div class="team-num">38</div></div><div class="team-row"><span class="team-flag">🇵🇾</span><div class="team-info"><div class="team-name">Paraguay</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">39</div></div><div class="team-row"><span class="team-flag">🇺🇿</span><div class="team-info"><div class="team-name">Uzbekistán</div><div class="team-conf">AFC</div></div><div class="team-num">40</div></div><div class="team-row"><span class="team-flag">🇿🇦</span><div class="team-info"><div class="team-name">Sudáfrica</div><div class="team-conf">CAF</div></div><div class="team-num">41</div></div></div>
+    <div class="group-block"><div class="group-label">Grupo L</div><div class="team-row"><span class="team-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span><div class="team-info"><div class="team-name">Escocia</div><div class="team-conf">UEFA</div></div><div class="team-num">42</div></div><div class="team-row"><span class="team-flag">🇧🇴</span><div class="team-info"><div class="team-name">Bolivia</div><div class="team-conf">CONMEBOL</div></div><div class="team-num">43</div></div><div class="team-row"><span class="team-flag">🇶🇦</span><div class="team-info"><div class="team-name">Qatar</div><div class="team-conf">AFC</div></div><div class="team-num">44</div></div><div class="team-row"><span class="team-flag">🇧🇫</span><div class="team-info"><div class="team-name">Burkina Faso</div><div class="team-conf">CAF</div></div><div class="team-num">45</div></div></div>
   </div>
 </div>
 <footer>
